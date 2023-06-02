@@ -1,0 +1,258 @@
+{
+    "openapi": "3.0.3",
+    "in fo": {
+        "title": "API-Receitas",
+        "description": "Essa API fornece recursos para persistência de Pessoas e Projetos em um banco de dados",
+        "contact": {
+            "name": "Valdenir Ziger",
+            "email": "valdenir@alunos.utfpr.edu.br"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081/api",
+            "description": "Rota para API"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "summary": "Efetua o Login",
+                "description": "Essa rota irá fazer o login no servidor",
+                "tags": [
+                    "Login"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login realizado com sucesso!"
+                    },
+                    "401": {
+                        "description": "Login desativado!"
+                    },
+                    "404": {
+                        "description": "Login não encontrado!"
+                    }
+                }
+            }
+        },
+        "/cadastrarPessoa": {
+            "post": {
+                "summary": "Cadastro de Pessoas",
+                "description": "Essa rota irá cadastrar uma Pessoa",
+                "tags": [
+                    "Pessoas"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pessoa"
+                            },
+                            "examples": {
+                                "Pessoa Como 'tipo' Administrador": {
+                                    "value": {
+                                        "login": "deno",
+                                        "senha": "1234",
+                                        "nome" : "Valdenir Ziger",
+                                        "cpf"  : "05346519920",
+                                        "email": "valdenir@alunos.utfpr.edu.br",
+                                        "tipo" : 0 
+                                    }
+                                },
+                                "Pessoa Como 'tipo' Responsável": {
+                                    "value": {
+                                        "login": "deno",
+                                        "senha": "1234",
+                                        "nome" : "Valdenir Ziger",
+                                        "cpf"  : "05346519920",
+                                        "email": "valdenir@alunos.utfpr.edu.br",
+                                        "tipo" : 1 
+                                    }
+                                },
+                                "Pessoa Como 'tipo' Candidato": {
+                                    "value": {
+                                        "login": "deno",
+                                        "senha": "1234",
+                                        "nome" : "Valdenir Ziger",
+                                        "cpf"  : "05346519920",
+                                        "email": "valdenir@alunos.utfpr.edu.br",
+                                        "tipo" : 2 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pessoa cadastrada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Pessoa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/buscaPessoa/{id}": {
+            "get": {
+                "summary": "Busca pessoa pelo Id",
+                "description": "Essa rota irá buscar uma pessoa pelo ID.",
+                "tags": [
+                    "Pessoas"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Pessoa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pessoas": {
+            "get": {
+                "summary": "Busca todas as pessoas",
+                "description": "Essa rota irá buscar todas as pessoas do banco",
+                "tags": [
+                    "Pessoas"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Efetue o login para acessar a funcionalidade"
+                    },
+                    "403": {
+                        "description": "Acesso não autorizado a essa a funcionalidade"
+                    }
+                }
+            }
+        },
+        "/candidatos": {
+            "get": {
+                "summary": "Busca todos os candidatos",
+                "description": "Essa rota irá buscar todas as pessoas do banco cadastrado como candidatos",
+                "tags": [
+                    "Pessoas"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Efetue o login para acessar a funcionalidade"
+                    },
+                    "403": {
+                        "description": "Acesso não autorizado a essa a funcionalidade"
+                    }
+                }
+            }
+        },
+        "/deletarPessoa/{id}": {
+            "delete": {
+                "summary": "Deleta uma pessoa pelo ID",
+                "description": "Essa rota irá deletar uma pessoa pelo ID",
+                "tags": [
+                    "Pessoas"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Pessoa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Pessoa": {
+                "type": "object",
+                "properties": {
+                    "login": {
+                        "type: string": "deno",
+                        "example" : "deno"
+                    },
+                    "senha": {
+                        "type: string": "01234",
+                        "example" : "01234"
+                    },
+                    "nome": {
+                        "type: string": "Valdenir Ziger",
+                        "example" : "Valdenir Ziger"
+                    },
+                    "cpf": {
+                        "type: string": "05346519920",
+                        "example" : "05346519920"
+                    },
+                    "email": {
+                        "type: string": "valdenir@alunos.utfpr.edu.br",
+                        "example" : "valdenir@alunos.utfpr.edu.br"
+                    },
+                    "tipo": {
+                        "type: integer": 2,
+                        "example" : 2
+                    }
+                }
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "login": {
+                        "type: string" :"admin",
+                        "example" : "admin"
+                    },
+                    "senha": {
+                        "type: string": "admin",
+                        "example" : "admin"
+                    }
+                }
+            }
+        }
+    }
+}
