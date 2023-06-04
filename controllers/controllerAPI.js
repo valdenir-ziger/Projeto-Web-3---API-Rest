@@ -133,20 +133,11 @@ module.exports = {
     },
 
     //################ Projeto ############################################################
-    async getProjeto(req, res) {
-        if (req.session.login == undefined) {
-            return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
-        }
-        else{
-            const projetos = await Projeto.find();
-            return res.status(200).json({ "data": { "codigo": 200, projetos } });
-        }
-    },
     async postProjeto(req, res){
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 1 - Responsável
+        else if (req.session.tipo == 1) {// 1 - Responsável
             var {nome, descricao, data_inicio, data_fim} = req.body;
             var id_pessoa_cadastro = pessoaSessao._id;
             const projetos = new Projeto({nome, descricao, data_inicio, data_fim, id_pessoa_cadastro});
@@ -164,7 +155,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 1 - Responsável
+        else if (req.session.tipo == 1) {// 1 - Responsável
             await Projeto.findOneAndUpdate({ _id: { $in: req.params.id } }, req.body).then((projetos) => {
                 return res.status(200).json({ "data": { "codigo": 200, projetos } });
             });
@@ -177,7 +168,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 1 - Responsável
+        else if (req.session.tipo == 1) {// 1 - Responsável
             await Projeto.findOneAndRemove({ _id: { $in: req.params.id } }).then((projetos) => {
                 return res.status(200).json({ "data": { "codigo": 200, projetos } });
             });
@@ -204,7 +195,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 1 - Responsável
+        else if (req.session.tipo == 1) {// 1 - Responsável
             var {id_projeto, id_candidato} = req.body;
 
             var projeto   = await Projeto.findOne({ _id: id_projeto});
@@ -242,7 +233,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 2 - Candidato
+        else if (req.session.tipo == 2) {// 2 - Candidato
             var {id_projeto, id_candidato} = req.body;
 
             var projeto   = await Projeto.findOne({ _id: id_projeto});
@@ -283,7 +274,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 1 - Responsável
+        else if (req.session.tipo == 2) {// 2 - Candidato
             var listaProjetos = [];
             var projeto       = await Projeto.find();
             for (const projetoSelecionado of projeto) {
@@ -301,7 +292,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 2 - Candidato
+        else if (req.session.tipo == 2) {// 2 - Candidato
             const { id }  = req.params;
             var projeto = await Projeto.findById(id);
             if(projeto == null){
@@ -324,7 +315,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 2 - Candidato
+        else  {
             const { id }  = req.params;
             var projeto = await Projeto.findById(id);
             if(projeto == null){
@@ -345,15 +336,12 @@ module.exports = {
                 return res.status(200).json({ "data": {"codigo": 200, "mensagem": "Nenhuma Pessoa Foi Selecionada Para esse Projeto" } });
             }
         }
-        else{
-            return res.status(403).json({"data": {"codigo": 403, "mensagem": "Acesso não autorizado a essa a funcionalidade" }});
-        }
     },
     async getListaPessoaInteressadaPorProjeto(req, res) {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 0) {// 2 - Candidato
+        else if (req.session.tipo == 1) {// 1 - Responsável
             const { id }  = req.params;
             var projeto = await Projeto.findById(id);
             if(projeto == null){

@@ -356,26 +356,6 @@
 			"response": []
 		},
 		{
-			"name": "testePopularidadeTodosProjetos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/api/popularidadeprojetos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"popularidadeprojetos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "testePopularidadeProjetosPorID",
 			"request": {
 				"method": "GET",

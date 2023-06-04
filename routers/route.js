@@ -15,7 +15,7 @@ route.delete('/api/deletarpessoa/:id', controllerAPI.deletePessoa);
 route.get("/api/candidatos"          , controllerAPI.getCandidatos);
 
 //Projeto
-route.get("/api/projetos"                  , controllerAPI.getProjeto);
+route.get("/api/projetos"                  , controllerAPI.getPopularidadeProjeto);
 route.post("/api/cadastrarprojeto"         , controllerAPI.postProjeto);
 route.put('/api/editarprojeto/:id'         , controllerAPI.putProjeto);
 route.delete('/api/deletarprojeto/:id'     , controllerAPI.deleteProjeto);
@@ -25,5 +25,4 @@ route.post("/api/candidatar"               , controllerAPI.postCandidatar);
 route.get("/api/candidatosselecionados/:id", controllerAPI.getListaPessoaSelecionadaPorProjeto);
 route.get("/api/candidatosinteressados/:id", controllerAPI.getListaPessoaInteressadaPorProjeto);
 route.get("/api/projetopopularidade/:id"   , controllerAPI.getPopularidadeProjetoPorID);
-route.get("/api/popularidadeprojetos"      , controllerAPI.getPopularidadeProjeto);
     
