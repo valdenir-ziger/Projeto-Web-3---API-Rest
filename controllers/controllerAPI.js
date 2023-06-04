@@ -274,7 +274,7 @@ module.exports = {
         if (req.session.login == undefined) {
             return res.status(401).json({"data": {"codigo": 401, "mensagem": "efetue o login para acessar a funcionalidade" }});
         }
-        else if (req.session.tipo == 2) {// 2 - Candidato
+        else {
             var listaProjetos = [];
             var projeto       = await Projeto.find();
             for (const projetoSelecionado of projeto) {
@@ -283,9 +283,6 @@ module.exports = {
             }
 
             return res.status(200).json({ "data": { "codigo": 200, listaProjetos } });
-        }
-        else{
-            return res.status(403).json({"data": {"codigo": 403, "mensagem": "Acesso não autorizado a essa a funcionalidade" }});
         }
     },
     async getPopularidadeProjetoPorID(req, res) {

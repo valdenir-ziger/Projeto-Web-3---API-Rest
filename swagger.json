@@ -207,6 +207,392 @@
                     }
                 }
             }
+        },
+        "/editarpessoa/{id}": {
+            "put": {
+                "summary": "Edita uma pessoa pelo ID",
+                "description": "Essa rota irá editar uma pessoa pelo ID",
+                "tags": [
+                    "Pessoas"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "examples": {
+                    "Pessoa Como 'tipo' Administrador": {
+                        "value": {
+                            "login": "deno",
+                            "senha": "1234",
+                            "nome" : "Valdenir Ziger",
+                            "cpf"  : "05346519920",
+                            "email": "valdenir@alunos.utfpr.edu.br",
+                            "tipo" : 0 
+                        }
+                    },
+                    "Pessoa Como 'tipo' Responsável": {
+                        "value": {
+                            "login": "deno",
+                            "senha": "1234",
+                            "nome" : "Valdenir Ziger",
+                            "cpf"  : "05346519920",
+                            "email": "valdenir@alunos.utfpr.edu.br",
+                            "tipo" : 1 
+                        }
+                    },
+                    "Pessoa Como 'tipo' Candidato": {
+                        "value": {
+                            "login": "deno",
+                            "senha": "1234",
+                            "nome" : "Valdenir Ziger",
+                            "cpf"  : "05346519920",
+                            "email": "valdenir@alunos.utfpr.edu.br",
+                            "tipo" : 2 
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Pessoa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/cadastrarprojeto": {
+            "post": {
+                "summary": "Cadastro de Projetos",
+                "description": "Essa rota irá cadastrar um Projeto",
+                "tags": [
+                    "Projetos"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Projeto"
+                            },
+                            "examples": {
+                                "Projetos": {
+                                    "value": {
+                                        "nome"        : "Projeto Teste",
+                                        "descricao"   : "Projeto Teste",
+                                        "data_inicio" : "2023-01-01T00:00:00",
+                                        "data_fim"    : "2023-01-01T00:00:00"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Projeto cadastrada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/buscarprojeto/{id}": {
+            "get": {
+                "summary": "Busca projeto pelo Id da Pessoa",
+                "description": "Essa rota irá buscar um projeto pelo ID da pessoa que cadastrou.",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do projeto no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projetos": {
+            "get": {
+                "summary": "Busca todas os projetos",
+                "description": "Essa rota irá buscar todos os projetos do banco",
+                "tags": [
+                    "Projetos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/deletarprojeto/{id}": {
+            "delete": {
+                "summary": "Deleta um projeto pelo ID",
+                "description": "Essa rota irá deletar um projeto pelo ID",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do projeto no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/editarprojeto/{id}": {
+            "put": {
+                "summary": "Edita um projeto pelo ID",
+                "description": "Essa rota irá editar um projeto pelo ID",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da pessoa no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "examples": {
+                    "Projetos": {
+                        "value": {
+                            "nome"        : "Projeto Teste",
+                            "descricao"   : "Projeto Teste",
+                            "data_inicio" : "2023-01-01T00:00:00",
+                            "data_fim"    : "2023-01-01T00:00:00"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Pessoa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/selecionacandidato": {
+            "post": {
+                "summary": "Seleciona candidatos",
+                "description": "Essa rota irá selecionar o candidato ao projeto",
+                "tags": [
+                    "Projetos"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Projeto"
+                            },
+                            "examples": {
+                                "Projetos": {
+                                    "value": {
+                                        "id_projeto"   : "647c970da58f91fe5f85cbe7",
+                                        "id_candidato" : "64793dd21ed3c0648b0d3a82"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Candidato selecionado ao projeto com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/candidatar": {
+            "post": {
+                "summary": "Candidatar",
+                "description": "Essa rota irá candidatar uma pessoa ao projeto",
+                "tags": [
+                    "Projetos"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Projeto"
+                            },
+                            "examples": {
+                                "Projetos": {
+                                    "value": {
+                                        "id_projeto"   : "647c970da58f91fe5f85cbe7",
+                                        "id_candidato" : "64793dd21ed3c0648b0d3a82"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Candidato adicionado ao projeto com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/candidatosselecionados": {
+            "get": {
+                "summary": "Candidatos Selecionados",
+                "description": "Essa rota irá retornar todas as pessoas selecionadas ao projeto",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do projeto no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Projeto listado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/candidatosinteressados": {
+            "get": {
+                "summary": "Candidatos Interessados",
+                "description": "Essa rota irá retornar todas as pessoas interessadas no projeto",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do projeto no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Projeto listado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projetopopularidade": {
+            "get": {
+                "summary": "Popularidade por Projeto",
+                "description": "Essa rota irá retornar um projeto com as informacoes de popularidade",
+                "tags": [
+                    "Projetos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do projeto no banco de dados.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Projeto listado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -250,6 +636,27 @@
                     "senha": {
                         "type: string": "admin",
                         "example" : "admin"
+                    }
+                }
+            },
+            "Projeto": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type: string": "Projeto 1",
+                        "example" : "Projeto 1"
+                    },
+                    "descricao": {
+                        "type: string": "Projeto teste 1",
+                        "example" : "Projeto teste 1"
+                    },
+                    "data_inicio": {
+                        "type: string": "2023-01-01T06:48:07",
+                        "example" : "2023-01-01T00:00:00"
+                    },
+                    "data_fim": {
+                        "type: string": "2023-01-01T06:48:07",
+                        "example" : "2023-01-01T00:00:00"
                     }
                 }
             }
