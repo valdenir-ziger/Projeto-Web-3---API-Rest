@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "b84477cb-f766-469d-8be5-7aa4974e57eb",
+		"name": "api rest web 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17644489"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"admin\",\r\n  \"senha\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeCandidatos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/candidatos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"candidatos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeListarPessoas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/pessoas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"pessoas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeListarProjeto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projetos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projetos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teste cadastrarprojeto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Projeto 2 \",\r\n  \"descricao\": \"Teste tes testestes testestes\",\r\n  \"data_inicio\": \"2023-01-01T06:48:07\",\r\n  \"data_fim\": \"2023-11-11T06:48:07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/cadastrarprojeto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cadastrarprojeto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeCadastrarPessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"candidato\",\r\n  \"senha\": \"candidato\",\r\n   \"nome\": \"Candidato\",\r\n    \"cpf\": \"123456789\",\r\n    \"email\": \"candidato@candidato\",\r\n    \"tipo\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/cadastrarpessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cadastrarpessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testebuscapessoa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/buscapessoa/64793dd21ed3c0648b0d3a82",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"buscapessoa",
+						"64793dd21ed3c0648b0d3a82"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeEditarPessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"admin\",\r\n  \"senha\": \"admin\",\r\n   \"nome\": \"Valdenir Ziger admin\",\r\n    \"cpf\": \"05346519920\",\r\n    \"email\": \"valdenir@alunos.utfpr.edu.br\",\r\n    \"tipo\": 0,\r\n    \"tipo_descricao\": \"Administrador\",\r\n    \"ocultado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/editarpessoa/64793dd21ed3c0648b0d3a82",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"editarpessoa",
+						"64793dd21ed3c0648b0d3a82"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeDeletarPessoa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/deletarpessoa/64793da61ed3c0648b0d3a80",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"deletarpessoa",
+						"64793da61ed3c0648b0d3a80"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeEditarProjeto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Projeto 2 editado\",\r\n  \"descricao\": \"Editado para teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/editarprojeto/647c9752a58f91fe5f85cbe9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"editarprojeto",
+						"647c9752a58f91fe5f85cbe9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeDeletarProjeto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/deletarprojeto/647c9752a58f91fe5f85cbe9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"deletarprojeto",
+						"647c9752a58f91fe5f85cbe9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeBuscarProjeto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/buscarprojeto/64793dd21ed3c0648b0d3a82",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"buscarprojeto",
+						"64793dd21ed3c0648b0d3a82"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeSelecionarCandidato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id_projeto\": \"647c970da58f91fe5f85cbe7\",\r\n  \"id_candidato\": \"64793dd21ed3c0648b0d3a82\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/selecionacandidato",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"selecionacandidato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeCandidatar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id_projeto\": \"647c970da58f91fe5f85cbe7\",\r\n  \"id_candidato\": \"647c9c9341a8569edc01d0cb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/candidatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"candidatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testePopularidadeTodosProjetos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/popularidadeprojetos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"popularidadeprojetos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testePopularidadeProjetosPorID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projetopopularidade/647c970da58f91fe5f85cbe7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projetopopularidade",
+						"647c970da58f91fe5f85cbe7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeCandidatosSelecionados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/candidatosselecionados/647c970da58f91fe5f85cbe7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"candidatosselecionados",
+						"647c970da58f91fe5f85cbe7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testeCandidatosInteressados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/candidatosinteressados/647c970da58f91fe5f85cbe7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"candidatosinteressados",
+						"647c970da58f91fe5f85cbe7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

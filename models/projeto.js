@@ -15,22 +15,12 @@ const Projeto = Schema({
         default: Date.now, 
         required: true 
     },
-    data_inicio_formatado: { 
-        type: String,
-        required: true 
-    },
 	data_fim: { 
         type: Date,
         required: false 
     },
-	data_fim_formatado: { 
-        type: String,
-        required: false 
-    },
-    ocultado: { 
-        type: Boolean,
-        required:true,
-        default: false
+    id_pessoa_cadastro: {
+        type:Schema.Types.ObjectId
     }
 });
 
